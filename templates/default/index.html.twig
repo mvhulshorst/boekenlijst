@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    {% for boek in boeks %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ boek.title }}</h5>
+                {% for review in boek.reviews %}
+                <p class="card-text">{{ review.description }}<br>-{{ review.name }}</p>
+                <style>
+                    .card-body{
+                        background-color: #C82829;
+                        color: #DDDDDD;
+                    }
+
+                    .card-text{
+                        color: #DDDDDD;
+                        font-size: 14px;
+                        font-family: Arial;
+                    }
+
+                    .card-title{
+                        font-size: 20px;
+                        font-family: Arial;
+                    }
+                </style>
+                {% endfor %}
+            </div>
+        </div><br>
+    {% endfor %}
+</div>
+{% endblock %}

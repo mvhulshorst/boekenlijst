@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boek index{% endblock %}
+
+{% block body %}
+    <h1>Boek index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>BoekId</th>
+                <th>ISBN</th>
+                <th>Author</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Reviews</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for boek in boeks %}
+            <tr>
+                <td>{{ boek.id }}</td>
+                <td>{{ boek.BoekId }}</td>
+                <td>{{ boek.ISBN }}</td>
+                <td>{{ boek.Author }}</td>
+                <td>{{ boek.Title }}</td>
+                <td>{{ boek.Price }}</td>
+                <td>{% for Review in Boek.Reviews %}
+
+                    {% endfor %}</td>
+                <td>
+                    <a href="{{ path('boek_show', {'id': boek.id}) }}">show</a>
+                    <a href="{{ path('boek_edit', {'id': boek.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('boek_new') }}">Create new</a>
+{% endblock %}
